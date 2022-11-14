@@ -10,11 +10,9 @@ public class DBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //commands to generate migration and uploade the new schema on DB IMP in order that EFC to WORKS
-        
-        // need to be installed dotnet tool install -g dotnet-ef
-        // dotnet ef migrations add InitialCreate where InitialCreate is a uniq message
-        // dotnet ef database update
+        // ! need to be installed dotnet tool install -g dotnet-ef
+        // ! dotnet ef migrations add InitialCreate where InitialCreate is a uniq message
+        // ! dotnet ef database update
 
         //amazon credentails
         optionsBuilder.UseNpgsql(@"Host=awseb-e-phug32p3mh-stack-awsebrdsdatabase-f06vkog3fu5g.cwtobajncazb.eu-north-1.rds.amazonaws.com;Database=postgres;Username=sep4user;Password=sep4passworddata");
