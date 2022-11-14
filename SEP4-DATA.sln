@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTServer", "RESTServer\RESTServer.csproj", "{7B0E6849-C952-40C0-867D-E5838F170CDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{F3C89FDB-CAE0-4E4B-B42A-A376BAE944D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{7B0E6849-C952-40C0-867D-E5838F170CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B0E6849-C952-40C0-867D-E5838F170CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B0E6849-C952-40C0-867D-E5838F170CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C89FDB-CAE0-4E4B-B42A-A376BAE944D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C89FDB-CAE0-4E4B-B42A-A376BAE944D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C89FDB-CAE0-4E4B-B42A-A376BAE944D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C89FDB-CAE0-4E4B-B42A-A376BAE944D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
