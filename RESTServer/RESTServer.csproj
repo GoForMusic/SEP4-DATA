@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EFCDataBase\EFCDataBase.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
     </ItemGroup>
 

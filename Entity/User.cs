@@ -9,7 +9,7 @@ public class User
     }
 
     [Key]
-    public string Id { get; set; }
+    public string Id { get; set; } = RandomIDGenerator.Generate(20);
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Username { get; set; }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using WebApplication1.Middleware;
 
@@ -39,6 +40,8 @@ builder.Services.AddSwaggerGen(c =>
 //services login
 
 //db 
+builder.Services.AddDbContext<DbContext>();
+
 
 var app = builder.Build();
 
