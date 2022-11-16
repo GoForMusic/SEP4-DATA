@@ -1,5 +1,7 @@
-﻿using Entity;
+﻿using System.Text.Json;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.JSInterop;
 using WebApplication1.Contracts;
 
 namespace WebApplication1;
@@ -14,7 +16,7 @@ public class UserController : ControllerBase
     {
         this.userInterface = userInterface;
     }
-    
+
     // get user
     [HttpGet]
     public async Task<ActionResult<User>> GetUser(string username)
@@ -29,9 +31,9 @@ public class UserController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-    
+
     // create user
-    
+
     [HttpPost]
     public async Task<ActionResult<User>> Adduser([FromBody] User user)
     {
@@ -47,7 +49,7 @@ public class UserController : ControllerBase
     }
 
     // delete user by id
-    
+
     [HttpDelete]
     [Route("{id}")]
     public async Task<ActionResult<ICollection<User>>> DeleteUser([FromRoute] string id)
@@ -62,7 +64,7 @@ public class UserController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-    
+
     // update user
 
     [HttpPatch]
@@ -79,5 +81,32 @@ public class UserController : ControllerBase
         }
     }
 
+    // login user
+    public async Task LoginAsync(string username, string password)
+    {
+        User? user = await userInterface.GetUser(username);
+        // await CacheUserAsync(user!);
+    }
+
+    // logout user 
+    public async Task LogoutAsync()
+    {
+        // not fully implemented 
+        
+        await ClearUserFromCacheAsync();
+
+    }
+
+    private async Task ClearUserFromCacheAsync()
+    {
+        throw new NotImplementedException();
+    }
+//
+//     private async Task CacheUserAsync(User user)
+//     {
+//         string serialisedData = JsonSerializer.Serialize(user);
+//         await jsRuntime.InvokeVoidA
+//     }
+// }
 
 }
