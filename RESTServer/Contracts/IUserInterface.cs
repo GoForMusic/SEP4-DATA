@@ -10,7 +10,4 @@ public interface IUserInterface
     public Task DeleteUser(string id);
     public Task Update(User user);
     public Task LoginAsync(string username, string password);
-    public Task LogoutAsync();
-
-  
 }
