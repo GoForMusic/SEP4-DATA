@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.JSInterop;
 using WebApplication1.Contracts;
 
-namespace WebApplication1;
+namespace Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/v1/[controller]")]
 public class UserController : ControllerBase
 {
     private IUserInterface userInterface;
@@ -19,6 +19,7 @@ public class UserController : ControllerBase
 
     // get user
     [HttpGet]
+    [Route("{id}")]
     public async Task<ActionResult<User>> GetUser(string username)
     {
         try
@@ -68,7 +69,7 @@ public class UserController : ControllerBase
     // update user
 
     [HttpPatch]
-    public async Task<ActionResult> Update([FromBody] User user)
+    public async Task<ActionResult> UpdateUser([FromBody] User user)
     {
         try
         {
@@ -81,32 +82,12 @@ public class UserController : ControllerBase
         }
     }
 
+    [HttpGet]
+    [Route("login/{username}/{password}")]
     // login user
     public async Task LoginAsync(string username, string password)
     {
         User? user = await userInterface.GetUser(username);
         // await CacheUserAsync(user!);
     }
-
-    // logout user 
-    public async Task LogoutAsync()
-    {
-        // not fully implemented 
-        
-        await ClearUserFromCacheAsync();
-
-    }
-
-    private async Task ClearUserFromCacheAsync()
-    {
-        throw new NotImplementedException();
-    }
-//
-//     private async Task CacheUserAsync(User user)
-//     {
-//         string serialisedData = JsonSerializer.Serialize(user);
-//         await jsRuntime.InvokeVoidA
-//     }
-// }
-
 }
