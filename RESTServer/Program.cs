@@ -44,8 +44,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IUserService, UserService>();
 
 //db 
-builder.Services.AddDbContext<DbContext>();
 builder.Services.AddScoped<IUserDAO, UserDAO>();
+builder.Services.AddDbContext<DbContext>();
 
 
 var app = builder.Build();

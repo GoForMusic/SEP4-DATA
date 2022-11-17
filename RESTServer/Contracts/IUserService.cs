@@ -9,5 +9,5 @@ public interface IUserService
     public Task<User> AddUserAsync(User user);
     public Task DeleteUserAsync(string id);
     public Task UpdateAsync(User user);
-    public Task LoginAsync(string username, string password);
+    public Task<User> LoginAsync(string username, string password);
 }

@@ -33,6 +33,7 @@ public class UserService : IUserService
         ValidateUsername(user.Username);
         ValidatePassword(user.Password);
         ValidateSex(user.Sex);
+        user.Password = encryptPassword(user.Password);
         //(Add when DAO is done) Code to test if username exists in the database
         await _userDao.AddUserAsync(user);
         //(Add when DAO is done) Code to put the user in the database
@@ -49,9 +50,11 @@ public class UserService : IUserService
         await _userDao.UpdateUserAsync(user);
     }
 
-    public async Task LoginAsync(string username, string password)
+    public async Task<User> LoginAsync(string username, string password)
     {
-        throw new NotImplementedException();
+        User user = await _userDao.GetUser(username);
+        if (validateHashPassword(password, user.Password)) return user;
+        else throw new Exception("Username/password incorrect!");
     }
     
     private async Task<bool> NotAllFieldsFilledIn(User user)
@@ -117,5 +120,25 @@ public class UserService : IUserService
         {
             throw new Exception("Invalid sex, must be M or F");
         }
+    }
+
+
+    private string encryptPassword(string passwordPlaintext)
+    {
+        string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
+        
+        return BCrypt.Net.BCrypt.HashPassword(passwordPlaintext, salt);
+    }
+
+    private bool validateHashPassword(string passwordPlaintext, string passwordHash)
+    {
+        bool password_verified = false;
+
+        if(null == passwordHash || !passwordHash.StartsWith("$2a$"))
+            throw new Exception("Invalid hash provided for comparison");
+
+        password_verified = BCrypt.Net.BCrypt.Verify(passwordPlaintext, passwordHash);
+
+        return password_verified;
     }
 }
