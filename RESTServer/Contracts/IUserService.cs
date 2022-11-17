@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Contracts;
 
-public interface IUserInterface
+public interface IUserService
 {
     public Task<ICollection<User>> GetUserAsync();
     public Task<User> GetUser(string username);

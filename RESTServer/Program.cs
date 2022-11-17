@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Services;
+using WebApplication1.Contracts;
 using WebApplication1.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +40,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 //services login
+builder.Services.AddScoped<IUserService, UserService>();
 
 //db 
 builder.Services.AddDbContext<DbContext>();
