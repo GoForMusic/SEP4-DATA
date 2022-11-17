@@ -1,5 +1,5 @@
+using EFCDataBase;
 using EFCDataBase.DAOImpl;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Services;
 using WebApplication1.Contracts;
@@ -45,7 +45,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 //db 
 builder.Services.AddScoped<IUserDAO, UserDAO>();
-builder.Services.AddDbContext<DbContext>();
+
+
+builder.Services.AddDbContext<DBContext>();
 
 
 var app = builder.Build();

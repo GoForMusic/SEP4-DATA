@@ -86,9 +86,19 @@ public class UserController : ControllerBase
     [HttpGet]
     [Route("login/{username}/{password}")]
     // login user
-    public async Task LoginAsync(string username, string password)
+    public async Task<ActionResult<User>> LoginAsync(string username, string password)
     {
-        User? user = await _userService.GetUserAsync(username);
+        try
+        {
+            User user = await _userService.GetUserAsync(username);
+            return Ok(user);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
+        
+       
         // await CacheUserAsync(user!);
     }
 }
