@@ -2,6 +2,7 @@
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.JSInterop;
+using Services;
 using WebApplication1.Contracts;
 
 namespace Controllers;
@@ -10,11 +11,11 @@ namespace Controllers;
 [Route("/api/v1/[controller]")]
 public class UserController : ControllerBase
 {
-    private IUserInterface userInterface;
+    private IUserService _userService;
 
-    public UserController(IUserInterface userInterface)
+    public UserController(IUserService userService)
     {
-        this.userInterface = userInterface;
+        this._userService = userService;
     }
 
     // get user
@@ -24,7 +25,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            ICollection<User> users = await userInterface.GetUserAsync();
+            ICollection<User> users = await _userService.GetUserAsync();
             return Ok(users);
         }
         catch (Exception e)
@@ -36,11 +37,11 @@ public class UserController : ControllerBase
     // create user
 
     [HttpPost]
-    public async Task<ActionResult<User>> Adduser([FromBody] User user)
+    public async Task<ActionResult<User>> AddUser([FromBody] User user)
     {
         try
         {
-            User newUser = await userInterface.AddUser(user);
+            User newUser = await _userService.AddUser(user);
             return Ok(newUser);
         }
         catch (Exception e)
@@ -57,7 +58,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            await userInterface.DeleteUser(id);
+            await _userService.DeleteUser(id);
             return Ok(id);
         }
         catch (Exception e)
@@ -73,7 +74,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            await userInterface.Update(user);
+            await _userService.Update(user);
             return Ok();
         }
         catch (Exception e)
@@ -87,7 +88,7 @@ public class UserController : ControllerBase
     // login user
     public async Task LoginAsync(string username, string password)
     {
-        User? user = await userInterface.GetUser(username);
+        User? user = await _userService.GetUser(username);
         // await CacheUserAsync(user!);
     }
 }
