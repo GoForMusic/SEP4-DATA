@@ -8,7 +8,7 @@ public interface IUserDAO
     public Task<ICollection<User>> GetUsersAsync();
     public Task<User> GetUserByIdAsync(string id);
     public Task<User> AddUserAsync(User user);
-    public Task DeleteUserAsync(int id);
+    public Task DeleteUserAsync(string id);
     public Task UpdateUserAsync(User user);
     public Task<User> GetUser(string username);
 }

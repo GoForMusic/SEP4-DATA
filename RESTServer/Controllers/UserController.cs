@@ -41,7 +41,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            User newUser = await _userService.AddUser(user);
+            User newUser = await _userService.AddUserAsync(user);
             return Ok(newUser);
         }
         catch (Exception e)
@@ -58,7 +58,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            await _userService.DeleteUser(id);
+            await _userService.DeleteUserAsync(id);
             return Ok(id);
         }
         catch (Exception e)
@@ -74,7 +74,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            await _userService.Update(user);
+            await _userService.UpdateAsync(user);
             return Ok();
         }
         catch (Exception e)
@@ -88,7 +88,7 @@ public class UserController : ControllerBase
     // login user
     public async Task LoginAsync(string username, string password)
     {
-        User? user = await _userService.GetUser(username);
+        User? user = await _userService.GetUserAsync(username);
         // await CacheUserAsync(user!);
     }
 }

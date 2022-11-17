@@ -1,4 +1,7 @@
-﻿namespace EFCDataBase.DAOImpl;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+namespace EFCDataBase.DAOImpl;
 using Entity;
 
 public class UserDAO : IUserDAO
@@ -31,9 +34,11 @@ public class UserDAO : IUserDAO
         {
             Console.WriteLine(e+" "+ e.StackTrace); 
         }
+
+        return user;
     }
 
-    public async Task DeleteUserAsync(int id)
+    public async Task DeleteUserAsync(string id)
     {
         User? user = await database.Users.FindAsync(id);
         if (user is null)
@@ -53,7 +58,7 @@ public class UserDAO : IUserDAO
     public async Task<User> GetUser(string username) // for login
     {
     
-        return await database.Users.FirstAsync(t => t.UserName.Equals(username));
+        return await database.Users.FirstAsync(t => t.Username.Equals(username));
  
     }
     

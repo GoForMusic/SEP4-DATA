@@ -1,21 +1,29 @@
-﻿using Entity;
+﻿using EFCDataBase.DAOImpl;
+using Entity;
 using WebApplication1.Contracts;
 
 namespace Services;
 
 public class UserService : IUserService
 {
+    private IUserDAO _userDao;
+
+    public UserService(IUserDAO userDao)
+    {
+        _userDao = userDao;
+    }
+
     public async Task<ICollection<User>> GetUserAsync()
     {
-        throw new NotImplementedException();
+        return await _userDao.GetUsersAsync();
     }
 
-    public async Task<User> GetUser(string username)
+    public async Task<User> GetUserAsync(string username)
     {
-        throw new NotImplementedException();
+        return await _userDao.GetUser(username);
     }
 
-    public async Task<User> AddUser(User user)
+    public async Task<User> AddUserAsync(User user)
     {
         if (await NotAllFieldsFilledIn(user) == true)
         {
@@ -26,18 +34,19 @@ public class UserService : IUserService
         ValidatePassword(user.Password);
         ValidateSex(user.Sex);
         //(Add when DAO is done) Code to test if username exists in the database
+        await _userDao.AddUserAsync(user);
         //(Add when DAO is done) Code to put the user in the database
         return user;
     }
 
-    public async Task DeleteUser(string id)
+    public async Task DeleteUserAsync(string id)
     {
-        throw new NotImplementedException();
+        await _userDao.DeleteUserAsync(id);
     }
 
-    public async Task Update(User user)
+    public async Task UpdateAsync(User user)
     {
-        throw new NotImplementedException();
+        await _userDao.UpdateUserAsync(user);
     }
 
     public async Task LoginAsync(string username, string password)
