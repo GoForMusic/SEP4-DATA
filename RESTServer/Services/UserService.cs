@@ -34,9 +34,8 @@ public class UserService : IUserService
         ValidatePassword(user.Password);
         ValidateSex(user.Sex);
         user.Password = encryptPassword(user.Password);
-        //(Add when DAO is done) Code to test if username exists in the database
+        
         await _userDao.AddUserAsync(user);
-        //(Add when DAO is done) Code to put the user in the database
         return user;
     }
 
