@@ -40,7 +40,7 @@ public class UserDAO : IUserDAO
 
     public async Task DeleteUserAsync(string id)
     {
-        User? user = await database.Users.FindAsync(id);
+        User? user = await database.Users.FirstAsync(t=>t.Id.Equals(id));
         if (user is null)
         {
             throw new Exception("Good sir, the user that you want to delete is not found");

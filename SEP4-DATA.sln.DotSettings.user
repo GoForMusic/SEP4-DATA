@@ -5,7 +5,7 @@
     &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.InValidateLogin&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b558dfa4_002D141a_002D4b8a_002Dbbec_002D4b9e9dc63e93/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetingPostByUsername" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b558dfa4_002D141a_002D4b8a_002Dbbec_002D4b9e9dc63e93/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetingPostByUsername" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.RegisterUserPasswordFormat&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.GetUserIncorectUsername&lt;/TestId&gt;&#xD;
