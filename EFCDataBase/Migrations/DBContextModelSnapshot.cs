@@ -26,6 +26,9 @@ namespace EFCDataBase.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
+                    b.Property<string>("Username")
+                        .HasColumnType("text");
+
                     b.Property<int>("Age")
                         .HasColumnType("integer");
 
@@ -48,11 +51,10 @@ namespace EFCDataBase.Migrations
                     b.Property<char>("Sex")
                         .HasColumnType("character(1)");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasKey("Id", "Username");
 
-                    b.HasKey("Id");
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });

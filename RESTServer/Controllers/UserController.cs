@@ -21,7 +21,7 @@ public class UserController : ControllerBase
     // get user
     [HttpGet]
     [Route("{id}")]
-    public async Task<ActionResult<User>> GetUser(string username)
+    public async Task<ActionResult<User>> GetUser([FromRoute]string id)
     {
         try
         {
