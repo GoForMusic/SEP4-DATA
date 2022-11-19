@@ -90,7 +90,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            User user = await _userService.GetUserAsync(username);
+            User user = await _userService.LoginAsync(username,password);
             return Ok(user);
         }
         catch (Exception e)

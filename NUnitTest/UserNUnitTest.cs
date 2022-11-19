@@ -97,4 +97,19 @@ public class UserNUnitTest
             Password = ""
         })));
     }
+
+    [Test]
+
+    public async virtual Task ValidateLogin()
+    {
+        User local = await _service.LoginAsync("adrian1234","Test1234");
+        Assert.IsNotNull(local);
+    }
+    
+    [Test]
+    public async virtual Task InValidateLogin()
+    {
+        Assert.ThrowsAsync<Exception>((async () => await _service.LoginAsync("x","x")));
+    }
+    
 }

@@ -52,9 +52,17 @@ public class UserService : IUserService
 
     public async Task<User> LoginAsync(string username, string password)
     {
-        User user = await _userDao.GetUser(username);
-        if (validateHashPassword(password, user.Password)) return user;
-        else throw new Exception("Username/password incorrect!");
+        try
+        {
+            User user = await _userDao.GetUser(username);
+            if (validateHashPassword(password, user.Password)) return user;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Username/password incorrect!");
+        }
+
+        return null;
     }
     
     private async Task<bool> NotAllFieldsFilledIn(User user)
