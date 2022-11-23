@@ -16,7 +16,7 @@ public class SensorsController : ControllerBase
     }
 
         [HttpGet]
-        [Route("/all")]
+        [Route("all")]
         public async Task<ActionResult<ICollection<Sensors>>> GetAllSensorsDataAsync()
         {
             try
@@ -31,7 +31,7 @@ public class SensorsController : ControllerBase
         }
 
         [HttpGet]
-        [Route("/all/date")]
+        [Route("all/date")]
         public async Task<ActionResult<ICollection<Sensors>>> GetSensorDataByDate([FromQuery] DateTime startDate,
             [FromQuery] DateTime endDate)
         {
@@ -47,7 +47,7 @@ public class SensorsController : ControllerBase
         }
 
         [HttpGet]
-        [Route("/get/{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Sensors>> GetSensorsDataByIdAsync([FromRoute] string id)
         {
             try
@@ -80,7 +80,7 @@ public class SensorsController : ControllerBase
         }
         
         [HttpDelete]
-        [Route("/delete/{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Sensors>> RemoveSensorsDataAsync([FromRoute] string id) {
             try {
                 await _sensorsService.RemoveSensorsDataAsync(id);
