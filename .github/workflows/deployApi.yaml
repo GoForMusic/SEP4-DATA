@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: website
-          path: /website
+          path: $GITHUB_WORKSPACE/website
           if-no-files-found: error
         
    
