@@ -65,6 +65,7 @@ jobs:
         id: download
         with:
           name: website
+          path: ${{ github.workspace }}/website
           
       - name: Generate source bundle
         run: zip -r site.zip website/** 
