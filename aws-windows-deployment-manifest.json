@@ -3,7 +3,7 @@
   "deployments": {
     "aspNetCoreWeb": [
       {
-        "name": "[yourAppName]",
+        "name": "Sep4dataserver-env",
         "parameters": {
           "appBundle": "site.zip",
           "iisPath": "/",
