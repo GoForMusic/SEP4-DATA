@@ -5,7 +5,7 @@ using WebApplication1.Services;
 namespace Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/v1/[controller]")]
 public class SensorsController : ControllerBase
 {
     private ISensorsService _sensorsService;
@@ -47,8 +47,8 @@ public class SensorsController : ControllerBase
         }
 
         [HttpGet]
-        [Route("{id:int}")]
-        public async Task<ActionResult<Sensors>> GetSensorsDataByIdAsync([FromQuery] string id)
+        [Route("/get/{id}")]
+        public async Task<ActionResult<Sensors>> GetSensorsDataByIdAsync([FromRoute] string id)
         {
             try
             {
@@ -80,10 +80,10 @@ public class SensorsController : ControllerBase
         }
         
         [HttpDelete]
-        [Route("/delete/all")]
-        public async Task<ActionResult<Sensors>> RemoveSensorsDataAsync() {
+        [Route("/delete/{id}")]
+        public async Task<ActionResult<Sensors>> RemoveSensorsDataAsync([FromRoute] string id) {
             try {
-                await _sensorsService.RemoveSensorsDataAsync();
+                await _sensorsService.RemoveSensorsDataAsync(id);
                 return Ok();
             } catch (Exception e) {
                 Console.WriteLine(e);

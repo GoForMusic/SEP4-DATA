@@ -9,5 +9,5 @@ public interface ISensorsService
     Task<ICollection<Sensors>> GetSensorDataByDate(DateTime startDate, DateTime endDate);
     Task<Sensors> GetSensorsDataByIdAsync(string id);
     Task<Sensors> AddSensorsDataAsync(Sensors sensors);
-    Task<Sensors> RemoveSensorsDataAsync();
+    Task<Sensors> RemoveSensorsDataAsync(string id);
 }

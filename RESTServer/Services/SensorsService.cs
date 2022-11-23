@@ -58,11 +58,11 @@ public class SensorsService : ISensorsService
         }
     }
 
-    public async Task<Sensors> RemoveSensorsDataAsync()
+    public async Task<Sensors> RemoveSensorsDataAsync(string id)
     {
         try
         {
-            return await _sensorsDao.RemoveAllSensorData();
+            return await _sensorsDao.RemoveSensorData(id);
         }
         catch (Exception e)
         {
