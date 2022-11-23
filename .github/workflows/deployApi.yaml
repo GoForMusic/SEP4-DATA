@@ -1,0 +1,90 @@
+﻿# Name of the workflow (action) which will be displaye on GitHub
+name: Deploy webapi to EB
+
+# Specifies when should the workflow run. Currently it's set-up to every push
+# to the branch called 'main'.
+on:
+  push:
+    branches:
+      # If you use 'master' branch instead, don't forget to change this to 'master'
+      - main
+
+# Global environment variables
+env:
+  APPLICATION_NAME: SEP4DataServer
+  ENVIRONMENT_NAME: Sep4dataserver-env
+  AWS_REGION: eu-north-1
+
+# Each workflow consists of one or many jobs
+jobs:
+  # A build job (this can be named called whatever you like)
+  build:
+    runs-on: ubuntu-latest
+
+    # Each job consists of one or many steps
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      # Documentation for this action - https://github.com/actions/setup-java
+      - name: Set up .Net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Publish
+        run: dotnet publish RESTServer/RESTServer.csproj -c Release -o website
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: website
+          path: website/**
+          if-no-files-found: error
+   
+
+  # Deployment job
+  deploy:
+    runs-on: ubuntu-latest
+    # Only start executing after the build job has completed successfully
+    needs: build
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+        # Download the packaged jar file
+      - name: Download the build artifact
+        uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: website
+          
+      - name: Generate source bundle
+        run: zip -r site.zip website/** 
+
+        # Generate a deployment package with all files necessary for AWS Elastic Beanstalk
+        # engine. This includes the packaged jar file and the .elasticbeanstalk folder
+        # which contains config.yml file.
+      - name: Generate deployment package
+        run: zip -r deploy.zip site.zip aws-windows-deployment-manifest.json
+
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          # To make this work, you need to create an IAM User (ideally with least
+          # privilege access) and store the generated Access key ID and Secret
+          # access key to your GitHub repository Secrets.
+          # > DO NOT HARDCODE THE VALUES DIRECTLY INTO THE CODE !!!
+          aws_access_key: ${{ secrets.ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.SECRET_ACCESS }}
+          # Make sure to set these variables based on your application/region
+          application_name: ${{ env.APPLICATION_NAME }}
+          environment_name: ${{ env.ENVIRONMENT_NAME }}
+          version_label: v1-${{ github.sha }}
+          region: ${{ env.AWS_REGION }}
+          # Deployment package we created in the previous step
+          deployment_package: deploy.zip
