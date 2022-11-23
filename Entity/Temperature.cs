@@ -2,15 +2,16 @@
 
 namespace Entity;
 
-public class Temperature
+public class Sensors
 {
     [Key]
     public string Id { get; set; } = RandomIDGenerator.Generate(8);
     [Required]
+    public string BoxId { get; set; }
+    [Required]
     public DateTime Timestamp { get; set; }
     [Required]
-    public float Temp { get; set; }
-    [Required]
-    public string BoxId { get; set; }
+    public float Temperature { get; set; }
+    
     
 }
