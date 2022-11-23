@@ -39,12 +39,12 @@ jobs:
       - name: Publish
         run: dotnet publish RESTServer/RESTServer.csproj -c Release -o website
       - name: Find the default path
-        run: echo "$GITHUB_WORKSPACE"
+        run: echo ${{ github.workspace }}
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: website
-          path: $GITHUB_WORKSPACE/website
+          path: ${{ github.workspace }}/website
           if-no-files-found: error
         
    
