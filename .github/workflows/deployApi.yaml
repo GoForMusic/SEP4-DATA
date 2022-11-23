@@ -85,10 +85,11 @@ jobs:
           # > DO NOT HARDCODE THE VALUES DIRECTLY INTO THE CODE !!!
           aws_access_key: ${{ secrets.ACCESS_KEY }}
           aws_secret_key: ${{ secrets.SECRET_ACCESS }}
+          use_existing_version_if_available: true
           # Make sure to set these variables based on your application/region
           application_name: ${{ env.APPLICATION_NAME }}
           environment_name: ${{ env.ENVIRONMENT_NAME }}
-          version_label: ${{github.run_number}}
+          version_label: ${{ github.sha }}
           region: ${{ env.AWS_REGION }}
           # Deployment package we created in the previous step
           deployment_package: deploy.zip
