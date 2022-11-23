@@ -92,4 +92,4 @@ jobs:
           version_label: v20221119004459
           region: ${{ env.AWS_REGION }}
           # Deployment package we created in the previous step
-          deployment_package: deploy.zip
+          deployment_package: site.zip
