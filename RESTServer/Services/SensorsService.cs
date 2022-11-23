@@ -3,18 +3,18 @@ namespace WebApplication1.Services;
 
 public class SensorsService : ISensorsService
 {
-    private ISensorsDAO _sensorsDao; 
+    //private ISensorsDAO _sensorsDao; 
     
-    public SensorsService(ISensorsDAO sensorsDao)
+    public SensorsService()
     {
-        _sensorsDao = sensorsDao;
+        //_sensorsDao = sensorsDao;
     }
     
     public async Task<ICollection<Sensors>> GetAllSensorsDataAsync()
     {
         try
         {
-            return await _sensorsDao.GetAllSensorsDataAsync(); // DAO SHOULD RETURN LIST/ARRAY;
+            return null; //await _sensorsDao.GetAllSensorsDataAsync(); // DAO SHOULD RETURN LIST/ARRAY;
         }
         catch (Exception e)
         {
@@ -26,7 +26,8 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return await _sensorsDao.GetSensorDataByDateAsync(startDate, endDate); // Query logic should be in DAO implementation
+            return
+                null; //await _sensorsDao.GetSensorDataByDateAsync(startDate, endDate); // Query logic should be in DAO implementation
         }
         catch (Exception e)
         {
@@ -38,7 +39,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return await _sensorsDao.GetSensorDataByIdAsync(id); 
+            return null; //await _sensorsDao.GetSensorDataByIdAsync(id); 
         }
         catch (Exception e)
         {
@@ -50,7 +51,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return await _sensorsDao.AddSensorsDataAsync(sensors);
+            return null; //await _sensorsDao.AddSensorsDataAsync(sensors);
         }
         catch (Exception e)
         {
@@ -62,7 +63,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return await _sensorsDao.RemoveSensorData(id);
+            return null; //await _sensorsDao.RemoveSensorData(id);
         }
         catch (Exception e)
         {
