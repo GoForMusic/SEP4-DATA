@@ -7,7 +7,7 @@ on:
   push:
     branches:
       # If you use 'master' branch instead, don't forget to change this to 'master'
-      - main
+      - master
 
 # Global environment variables
 env:
