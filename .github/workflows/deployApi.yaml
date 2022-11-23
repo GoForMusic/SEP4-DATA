@@ -38,12 +38,15 @@ jobs:
         run: dotnet build --no-restore
       - name: Publish
         run: dotnet publish RESTServer/RESTServer.csproj -c Release -o website
+      - name: Find the default path
+        run: echo "$GITHUB_WORKSPACE"
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: website
           path: /website
           if-no-files-found: error
+        
    
 
   # Deployment job
