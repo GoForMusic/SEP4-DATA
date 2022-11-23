@@ -68,7 +68,7 @@ jobs:
           path: ${{ github.workspace }}/website
           
       - name: Generate source bundle
-        run: zip -r site.zip website/** 
+        run: cd website | zip -r ../site.zip * 
 
         # Generate a deployment package with all files necessary for AWS Elastic Beanstalk
         # engine. This includes the packaged jar file and the .elasticbeanstalk folder
