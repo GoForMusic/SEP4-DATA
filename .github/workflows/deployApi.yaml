@@ -68,9 +68,9 @@ jobs:
           path: ${{ github.workspace }}/website
           
       - name: Generate source bundle
-        run: cd ${{ github.workspace }}/website/website && zip /tmp/website.zip ./* 
+        run: cd ${{ github.workspace }}/website && zip /tmp/website.zip ./* 
       - name: Print details
-        run: cd ${{ github.workspace }}/website/website && ls
+        run: cd ${{ github.workspace }}/website && ls
       - name: Print temp folder
         run: cd /tmp && ls
 
