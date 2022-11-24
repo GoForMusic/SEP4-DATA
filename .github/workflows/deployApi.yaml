@@ -65,7 +65,7 @@ jobs:
         id: download
         with:
           name: website
-          path: ${{ github.workspace }}/website
+          path: ${{ github.workspace }}
           
       - name: PrintDIR
         run: cd ${{ github.workspace }}/website | ls
