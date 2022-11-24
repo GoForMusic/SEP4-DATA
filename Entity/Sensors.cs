@@ -12,6 +12,6 @@ public class Sensors
     public DateTime Timestamp { get; set; }
     [Required]
     public float Temperature { get; set; }
-    
-    
+    [Required]
+    public float Co2 { get; set; }
 }
