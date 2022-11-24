@@ -17,16 +17,23 @@ env:
 
 # Each workflow consists of one or many jobs
 jobs:
+  #run Nunit test before build and deploy
+  tests:
+    name: NUnit Testing project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+      - run: dotnet test NUnitTest
+  
   # A build job (this can be named called whatever you like)
   build:
     runs-on: ubuntu-latest
-
-    # Each job consists of one or many steps
+    needs: tests
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
-      # Documentation for this action - https://github.com/actions/setup-java
+      # Documentation for this action - https://github.com/actions/setup-dotnet
       - name: Set up .Net
         uses: actions/setup-dotnet@v3
         with:
@@ -38,8 +45,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Publish
         run: dotnet publish RESTServer/RESTServer.csproj -c Release -o website
-      - name: Find the default path
-        run: echo ${{ github.workspace }}
+        #build artifect
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -54,12 +60,12 @@ jobs:
     runs-on: ubuntu-latest
     # Only start executing after the build job has completed successfully
     needs: build
-
+    
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
-        # Download the packaged jar file
+        # Download the webapp DLL build files
       - name: Download the build artifact
         uses: actions/download-artifact@v2
         id: download
@@ -67,12 +73,9 @@ jobs:
           name: webapp
           path: ${{ github.workspace }}/website
           
+          
       - name: Generate source bundle
         run: cd ${{ github.workspace }}/website && zip /tmp/website.zip ./* 
-      - name: Print details
-        run: cd ${{ github.workspace }}/website && ls
-      - name: Print temp folder
-        run: cd /tmp && ls
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v16
