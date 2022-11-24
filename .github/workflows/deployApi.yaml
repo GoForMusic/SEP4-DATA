@@ -67,6 +67,8 @@ jobs:
           name: website
           path: ${{ github.workspace }}/website
           
+      - name: PrintDIR
+        run: cd ${{ github.workspace }}/website | ls
       - name: Generate source bundle
         run: cd ${{ github.workspace }}/website | ls | zip website.zip ./* 
 
