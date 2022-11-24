@@ -70,12 +70,6 @@ jobs:
       - name: Generate source bundle
         run: cd website | zip -r ../site.zip * 
 
-        # Generate a deployment package with all files necessary for AWS Elastic Beanstalk
-        # engine. This includes the packaged jar file and the .elasticbeanstalk folder
-        # which contains config.yml file.
-      - name: Generate deployment package
-        run: zip -r deploy.zip site.zip aws-windows-deployment-manifest.json
-
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v16
         with:
@@ -92,4 +86,4 @@ jobs:
           version_label: v20221119004459
           region: ${{ env.AWS_REGION }}
           # Deployment package we created in the previous step
-          deployment_package: site.zip
+          deployment_package: website/site.zip
