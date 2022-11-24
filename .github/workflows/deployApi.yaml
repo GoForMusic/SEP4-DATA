@@ -68,9 +68,9 @@ jobs:
           path: ${{ github.workspace }}/website
           
       - name: Generate source bundle
-        run: cd ${{ github.workspace }}/website | zip website.zip website/* 
+        run: cd ${{ github.workspace }}/website | zip /tmp/website.zip website/* 
       - name: Print details
-        run: cd ${{ github.workspace }}/website | ls
+        run: cd ${{ github.workspace }}/website | ls | cd ${{ github.workspace }}/website/tmp | ls
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v16
@@ -88,4 +88,4 @@ jobs:
           version_label: v20221123235737
           region: ${{ env.AWS_REGION }}
           # Deployment package we created in the previous step
-          deployment_package: ${{ github.workspace }}/website/website.zip
+          deployment_package: ${{ github.workspace }}/website/tmp/website.zip
