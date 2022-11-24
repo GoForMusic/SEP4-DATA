@@ -65,12 +65,10 @@ jobs:
         id: download
         with:
           name: website
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/website
           
-      - name: PrintDIR
-        run: cd ${{ github.workspace }}/website | ls
       - name: Generate source bundle
-        run: cd ${{ github.workspace }}/website | ls | zip website.zip ./* 
+        run: cd ${{ github.workspace }}/website/website | zip website.zip ./* 
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v16
