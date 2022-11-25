@@ -25,7 +25,7 @@ public class DBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<User>().HasKey(user => new {user.Id, user.Username});
         modelBuilder.Entity<User>().HasIndex(user => user.Username ).IsUnique();
-        modelBuilder.Entity<Sensors>().HasKey(sensor => new {sensor.Id, sensor.Temperature});
-        modelBuilder.Entity<Sensors>().HasIndex(sensor => sensor.Id).IsUnique();
+       
+        
     }
 }
