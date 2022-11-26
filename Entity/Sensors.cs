@@ -7,11 +7,15 @@ public class Sensors
     [Key]
     public string Id { get; set; } = RandomIDGenerator.Generate(8);
     [Required]
-    public string BoxId { get; set; }
-    [Required]
     public DateTime Timestamp { get; set; }
     [Required]
     public float Temperature { get; set; }
     [Required]
-    public float Co2 { get; set; }
+    public float Humidity { get; set; }
+    [Required]
+    public float CO2 { get; set; }
+    [Required]
+    public float DewPt { get; set; }
+    
+    //! STest with teacher fake data
 }

@@ -46,7 +46,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISensorsService, SensorsService>();
 //db 
 builder.Services.AddScoped<IUserDAO, UserDAO>();
-builder.Services.AddScoped<ISensorsDAO,ISensorsDAO>();
+builder.Services.AddScoped<ISensorsDAO,SensorsDAO>();
 
 builder.Services.AddDbContext<DBContext>();
 
