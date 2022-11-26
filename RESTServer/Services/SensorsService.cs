@@ -1,20 +1,21 @@
-﻿using Entity;
+﻿using EFCDataBase.DAOImpl;
+using Entity;
 namespace WebApplication1.Services;
 
 public class SensorsService : ISensorsService
 {
-    //private ISensorsDAO _sensorsDao; 
+    private ISensorsDAO _sensorsDao; 
     
-    public SensorsService()
+    public SensorsService(ISensorsDAO sensorsDao)
     {
-        //_sensorsDao = sensorsDao;
+        _sensorsDao = sensorsDao;
     }
     
     public async Task<ICollection<Sensors>> GetAllSensorsDataAsync()
     {
         try
         {
-            return null; //await _sensorsDao.GetAllSensorsDataAsync(); // DAO SHOULD RETURN LIST/ARRAY;
+            return await _sensorsDao.GetSensorsAsync();
         }
         catch (Exception e)
         {
@@ -26,8 +27,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return
-                null; //await _sensorsDao.GetSensorDataByDateAsync(startDate, endDate); // Query logic should be in DAO implementation
+            return await _sensorsDao.GetSensorDataByDateAsync(startDate, endDate);
         }
         catch (Exception e)
         {
@@ -39,7 +39,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return null; //await _sensorsDao.GetSensorDataByIdAsync(id); 
+            return await _sensorsDao.GetSensorAsync(id);
         }
         catch (Exception e)
         {
@@ -51,7 +51,7 @@ public class SensorsService : ISensorsService
     {
         try
         {
-            return null; //await _sensorsDao.AddSensorsDataAsync(sensors);
+            return await _sensorsDao.AddSensorAsync(sensors);
         }
         catch (Exception e)
         {
@@ -59,11 +59,11 @@ public class SensorsService : ISensorsService
         }
     }
 
-    public async Task<Sensors> RemoveSensorsDataAsync(string id)
+    public async Task RemoveSensorsDataAsync(string id)
     {
         try
         {
-            return null; //await _sensorsDao.RemoveSensorData(id);
+            await _sensorsDao.DeleteSensorAsync(id);
         }
         catch (Exception e)
         {

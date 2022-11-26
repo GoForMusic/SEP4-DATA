@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace EFCDataBase.DAOImpl;
 public interface IUserDAO
 {
-    public Task<ICollection<User>> GetUsersAsync();
-    public Task<User> GetUserByIdAsync(string id);
-    public Task<User> AddUserAsync(User user);
-    public Task DeleteUserAsync(string id);
-    public Task UpdateUserAsync(User user);
-    public Task<User> GetUser(string username);
+    Task<ICollection<User>> GetUsersAsync();
+    Task<User> GetUserByIdAsync(string id);
+    Task<User> AddUserAsync(User user);
+    Task DeleteUserAsync(string id);
+    Task UpdateUserAsync(User user);
+    Task<User> GetUser(string username);
 }
