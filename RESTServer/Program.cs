@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using Services;
 using WebApplication1.Contracts;
 using WebApplication1.Middleware;
+using WebApplication1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,10 +43,10 @@ builder.Services.AddSwaggerGen(c =>
 
 //services login
 builder.Services.AddScoped<IUserService, UserService>();
-
+builder.Services.AddScoped<ISensorsService, SensorsService>();
 //db 
 builder.Services.AddScoped<IUserDAO, UserDAO>();
-
+builder.Services.AddScoped<ISensorsDAO,ISensorsDAO>();
 
 builder.Services.AddDbContext<DBContext>();
 

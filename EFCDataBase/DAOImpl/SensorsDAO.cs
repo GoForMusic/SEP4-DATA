@@ -4,22 +4,27 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EFCDataBase.DAOImpl;
 
-public class TempDAO : ITempDAO
+public class SensorsDAO : ISensorsDAO
 {
 
     private readonly DBContext database;
 
-    public TempDAO(DBContext database)
+    public SensorsDAO(DBContext database)
     {
         this.database = database;
     }
 
-    public async Task<Sensors> GetTemperatureAsync(string id)
+    public async Task<Sensors> GetSensorAsync(string id)
     {
         return await database.Sensors.FirstAsync(t => t.Id.Equals(id));
     }
 
-    public async Task DeleteTemperatureAsync(string id)
+    public async Task<List<Sensors>> GetSensorsAsync()
+    {
+        return await database.Sensors.ToListAsync();
+    }
+    
+    public async Task DeleteSensorAsync(string id)
     {
         Sensors? sensor = await database.Sensors.FirstAsync(se => se.Id.Equals(id));
         if (sensor is null)
@@ -31,7 +36,7 @@ public class TempDAO : ITempDAO
         await database.SaveChangesAsync();
     }
 
-    public async Task UpdateTemperatureAsync(Sensors sensor)
+    public async Task UpdateSensorAsync(Sensors sensor)
     {
         database.Sensors.Update(sensor);
         await database.SaveChangesAsync();
@@ -51,5 +56,10 @@ public class TempDAO : ITempDAO
         }
 
         return sensor;
+    }
+
+    public Task<ICollection<Sensors>> GetSensorDataByDateAsync(DateTime startDate, DateTime endDate)
+    {
+        throw new NotImplementedException();
     }
 }
