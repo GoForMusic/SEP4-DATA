@@ -8,7 +8,6 @@ using WebApplication1.Contracts;
 namespace NUnitTest;
 
 using NUnit.Framework;
-
 public class UserNUnitTest
 {
     protected IUserService _service;
