@@ -7,11 +7,11 @@ namespace Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class RecordController : ControllerBase
+public class SensorController : ControllerBase
 {
     private IRecordService _recordService;
 
-    public RecordController(IRecordService recordService)
+    public SensorController(IRecordService recordService)
     {
         _recordService = recordService;
     }

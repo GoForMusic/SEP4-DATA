@@ -51,7 +51,4 @@ public class RecordFilter
     
     //* PAGINATION
     public int size { get; set;  }
-    
-    //* index
-    public string id { get; set; }
 }

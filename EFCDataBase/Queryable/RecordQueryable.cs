@@ -1,5 +1,7 @@
 ﻿using Entity;
 using Entity.RestFilter;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace EFCDataBase.Queryable;
 
@@ -7,6 +9,40 @@ public class RecordQueryable
 {
     public static IQueryable<Record> AddFilltersOnQuery(RecordFilter filter, IQueryable<Record> queryable)
     {
+        //* Filter by datatime
+        
+        Console.WriteLine(filter.TimestampEQ);
+        
+           if (!filter.TimestampEQ.Equals(new DateTime()))
+            {
+                queryable = queryable.Where(x => x.Timestamp == filter.TimestampEQ);
+            }
+        
+        if (!filter.TimestampEQ.Equals(new DateTime()))
+        {
+            queryable = queryable.Where(x => x.Timestamp < filter.TimestampGT);
+        }
+        
+        if (!filter.TimestampEQ.Equals(new DateTime()))
+        {
+            queryable = queryable.Where(x => x.Timestamp > filter.TimestampLT);
+        }
+        
+        if (!filter.TimestampEQ.Equals(new DateTime()))
+        {
+            queryable = queryable.Where(x => x.Timestamp <= filter.TimestampGTE);
+        }
+        
+        if (!filter.TimestampEQ.Equals(new DateTime()))
+        {
+            queryable = queryable.Where(x => x.Timestamp >= filter.TimestampLTE);
+        }
+        
+        if (!filter.TimestampEQ.Equals(new DateTime()))
+        {
+            queryable = queryable.Where(x => !x.Timestamp.Equals(filter.TimestampNOT));
+        }
+
         //* Filter by Humidity
         
         if (filter?.HumidityEQ != null && filter?.HumidityEQ!=0)
@@ -137,11 +173,7 @@ public class RecordQueryable
         
         if(filter?.size != 0)
             queryable = queryable.Take(filter.size);
-
-        if (!String.IsNullOrEmpty(filter?.id))
-        {
-            queryable=queryable.Where(t=>t.Id==filter.id);
-        }
+        
         
         return queryable;
     }

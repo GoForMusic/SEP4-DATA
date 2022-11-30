@@ -20,6 +20,7 @@ public class DBContext : DbContext
         //amazon credentails
         optionsBuilder.UseNpgsql(@"Host=awseb-e-phug32p3mh-stack-awsebrdsdatabase-f06vkog3fu5g.cwtobajncazb.eu-north-1.rds.amazonaws.com;Database=postgres;Username=sep4user;Password=sep4passworddata");
         optionsBuilder.EnableSensitiveDataLogging();
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
