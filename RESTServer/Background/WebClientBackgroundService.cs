@@ -5,13 +5,13 @@ namespace WebApplication1.Background;
 
 public class WebClientBackgroundService : BackgroundService
 {
-    private IWebClient _webClient;
+    private SensorsClient _webClient;
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _webClient = new SensorsClient();
         try
         {
+            _webClient = new SensorsClient();
             while (!stoppingToken.IsCancellationRequested)
             {
                 _webClient.WsClientTest();

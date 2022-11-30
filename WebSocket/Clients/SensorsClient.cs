@@ -14,12 +14,15 @@ public class SensorsClient : IWebClient
     private ISensorsDAO _sensorsDao;
     private ClientWebSocket _clientWebSocket;
     
+    
+    
     private readonly string _uriAddress = "wss://iotnet.cibicom.dk/app?token=vnoUeAAAABFpb3RuZXQudGVyYWNvbS5kawhxYha6idspsvrlQ4C7KWA=";
     private readonly string _eui = "0004A30B00219CAC";
 
     public SensorsClient()
     {
         _clientWebSocket = new ClientWebSocket();
+        ConnectClientAsync();
     }
     
     
@@ -56,17 +59,42 @@ public class SensorsClient : IWebClient
             throw;
         }
     }
-
+    
     public async Task WsClientTest()
     {
-        await ConnectClientAsync();
-        
-        //receive
-        Byte[] buffer = new byte[256];
-        var x = await _clientWebSocket.ReceiveAsync(buffer, CancellationToken.None);
-        var strResult = Encoding.UTF8.GetString(buffer);
-        Sensors? sensors = ReceivedData(strResult);
-
-        Console.WriteLine(sensors.Temperature);
+        try
+        {
+            Console.WriteLine("WS-CLIENT--------->START");
+            DownLinkStream upLinkStream = new()
+            {
+                cmd = "tx",
+                port = 2,
+                EUI = _eui,
+                data = "E803"
+            };
+            string payloadJson = JsonSerializer.Serialize(upLinkStream);
+            Console.WriteLine("---CALL-DownLink---");
+            Console.WriteLine(payloadJson);
+            Console.WriteLine("---CALL-DownLink---");
+            //send
+            await _clientWebSocket.SendAsync(Encoding.UTF8.GetBytes(payloadJson), WebSocketMessageType.Text, true, CancellationToken.None);
+            
+            Byte[] buffer = new byte[256];
+            var x = await _clientWebSocket.ReceiveAsync(buffer,CancellationToken.None);
+            var strResult = Encoding.UTF8.GetString(buffer);
+            
+            Console.WriteLine("---Receive-DownLink---");
+            Console.WriteLine(strResult);
+            Console.WriteLine("---Receive-DownLink---");
+            
+            //get data and convert
+            Sensors? getSensors = ReceivedData(strResult);
+            
+            Console.WriteLine("WS-CLIENT--------->END");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
 }
