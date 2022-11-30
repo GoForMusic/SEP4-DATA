@@ -9,12 +9,14 @@
 
     <ItemGroup>
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\EFCDataBase\EFCDataBase.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
+      <ProjectReference Include="..\WebSocket\WebSocket.csproj" />
     </ItemGroup>
 
 </Project>
