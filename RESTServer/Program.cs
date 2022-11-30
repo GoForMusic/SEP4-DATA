@@ -46,17 +46,17 @@ builder.Services.AddSwaggerGen(c =>
 
 //!services login
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ISensorsService, SensorsService>();
+builder.Services.AddScoped<IRecordService, RecordService>();
 //!db 
 builder.Services.AddScoped<IUserDAO, UserDAO>();
-builder.Services.AddScoped<ISensorsDAO,SensorsDAO>();
+builder.Services.AddScoped<IRecordDAO,RecordDAO>();
 
 builder.Services.AddDbContext<DBContext>();
 
 
 //? WS-Client
 //WS-client
-builder.Services.AddScoped<IWebClient, SensorsClient>();
+builder.Services.AddScoped<IWebClient, RecordClient>();
 builder.Services.AddHostedService<WebClientBackgroundService>();
 
 var app = builder.Build();

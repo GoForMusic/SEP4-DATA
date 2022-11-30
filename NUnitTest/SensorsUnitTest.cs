@@ -6,14 +6,14 @@ using WebApplication1.Services;
 
 namespace NUnitTest;
 
-public class SensorsUnitTest
+public class RecordUnitTest
 {
-    private ISensorsService _service;
+    private IRecordService _service;
     
     [SetUp]
     public void Setup()
     {
-        _service = new SensorsService(new SensorsDAO(new DBContext()));
+        _service = new RecordService(new RecordDAO(new DBContext()));
     }
 
     [TearDown]
@@ -22,13 +22,13 @@ public class SensorsUnitTest
         _service = null;
     }
     
-    private async Task<Sensors> createSensorData()
+    private async Task<Record> createRecordData()
     {
         DateTime dateTest = new DateTime(2023, 01, 01);
         
         try
         {
-            Sensors local =  await _service.AddSensorsDataAsync(new Sensors()
+            Record local =  await _service.AddRecordDataAsync(new Record()
             {
                 //BoxId = "testBoxId",
                 Timestamp = dateTest,
@@ -46,32 +46,32 @@ public class SensorsUnitTest
     }
     
     [Test, Order(1)]
-    public async virtual Task AddSensorsObjSuccessfully()
+    public async virtual Task AddRecordObjSuccessfully()
     {
-        Assert.NotNull(await createSensorData());
+        Assert.NotNull(await createRecordData());
     }
 
     [Test]
-    public async virtual Task GetSensors_ByDate()
+    public async virtual Task GetRecord_ByDate()
     {
         DateTime dateTestStart = new DateTime(2022, 02, 02);
         DateTime dateTestEnd = new DateTime(2024, 02, 02);
-        Assert.ThrowsAsync<Exception>((async () => await _service.GetSensorDataByDate(dateTestStart, dateTestStart)));
-        Assert.NotNull((async () => await _service.GetSensorDataByDate(dateTestStart, dateTestEnd)));
+        Assert.ThrowsAsync<Exception>((async () => await _service.GetRecordDataByDate(dateTestStart, dateTestStart)));
+        Assert.NotNull((async () => await _service.GetRecordDataByDate(dateTestStart, dateTestEnd)));
     }
 
     [Test]
-    public async virtual Task GetSensors_AllReturnsNotNull()
+    public async virtual Task GetRecord_AllReturnsNotNull()
     {
-        Assert.NotNull((async () => await _service.GetAllSensorsDataAsync()));
+        Assert.NotNull((async () => await _service.GetAllRecordDataAsync()));
     }
 
     [Test]
-    public async virtual Task GetSensors_ById()
+    public async virtual Task GetRecord_ById()
     {
-        await createSensorData();
+        await createRecordData();
         DateTime dateTest = new DateTime(2022, 01, 01);
-        Sensors local =  await _service.AddSensorsDataAsync(new Sensors()
+        Record local =  await _service.AddRecordDataAsync(new Record()
         {
             //BoxId = "testBoxId",
             Timestamp = dateTest,
@@ -79,7 +79,7 @@ public class SensorsUnitTest
             CO2 = 12.3f,
         });
 
-        Assert.AreEqual("99999999",   _service.GetSensorsDataByIdAsync("99999999").Result.Id); ;
+        Assert.AreEqual("99999999",   _service.GetRecordDataByIdAsync("99999999").Result.Id); ;
     }
     
     

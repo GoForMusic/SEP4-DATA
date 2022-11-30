@@ -6,23 +6,23 @@ namespace Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class SensorsController : ControllerBase
+public class RecordController : ControllerBase
 {
-    private ISensorsService _sensorsService;
+    private IRecordService _recordService;
 
-    public SensorsController(ISensorsService sensorsService)
+    public RecordController(IRecordService recordService)
     {
-        _sensorsService = sensorsService;
+        _recordService = recordService;
     }
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<ICollection<Sensors>>> GetAllSensorsDataAsync()
+        public async Task<ActionResult<ICollection<Record>>> GetAllRecordDataAsync()
         {
             try
             {
-                ICollection<Sensors> sensors = await _sensorsService.GetAllSensorsDataAsync();
-                return Ok(sensors);
+                ICollection<Record> record = await _recordService.GetAllRecordDataAsync();
+                return Ok(record);
             }
             catch (Exception e)
             {
@@ -32,13 +32,13 @@ public class SensorsController : ControllerBase
 
         [HttpGet]
         [Route("all/date")]
-        public async Task<ActionResult<ICollection<Sensors>>> GetSensorDataByDate([FromQuery] DateTime startDate,
+        public async Task<ActionResult<ICollection<Record>>> GetRecordDataByDate([FromQuery] DateTime startDate,
             [FromQuery] DateTime endDate)
         {
             try
             {
-                ICollection<Sensors> sensors = await _sensorsService.GetSensorDataByDate(startDate, endDate);
-                return Ok(sensors);
+                ICollection<Record> record = await _recordService.GetRecordDataByDate(startDate, endDate);
+                return Ok(record);
             }
             catch (Exception e)
             {
@@ -48,12 +48,12 @@ public class SensorsController : ControllerBase
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<Sensors>> GetSensorsDataByIdAsync([FromRoute] string id)
+        public async Task<ActionResult<Record>> GetRecordDataByIdAsync([FromRoute] string id)
         {
             try
             {
-                Sensors sensors = await _sensorsService.GetSensorsDataByIdAsync(id);
-                return Ok(sensors);
+                Record record = await _recordService.GetRecordDataByIdAsync(id);
+                return Ok(record);
             }
             catch (Exception e)
             {
@@ -62,7 +62,7 @@ public class SensorsController : ControllerBase
         }
 
         [HttpPost]
-        public async Task<ActionResult<Sensors>> AddSensorsDataAsync([FromBody] Sensors sensors)
+        public async Task<ActionResult<Record>> AddSensorsDataAsync([FromBody] Record record)
         {
             if (!ModelState.IsValid)
             {
@@ -70,8 +70,8 @@ public class SensorsController : ControllerBase
             }
             try
             {
-                Sensors localSensors = await _sensorsService.AddSensorsDataAsync(sensors);
-                return Created($"/{localSensors.Id}", localSensors);
+                Record localRecord = await _recordService.AddRecordDataAsync(record);
+                return Created($"/{localRecord.Id}", localRecord);
             }
             catch (Exception e)
             {
@@ -81,9 +81,9 @@ public class SensorsController : ControllerBase
         
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<Sensors>> RemoveSensorsDataAsync([FromRoute] string id) {
+        public async Task<ActionResult<Record>> RemoveSensorsDataAsync([FromRoute] string id) {
             try {
-                await _sensorsService.RemoveSensorsDataAsync(id);
+                await _recordService.RemoveRecordDataAsync(id);
                 return Ok();
             } catch (Exception e) {
                 Console.WriteLine(e);

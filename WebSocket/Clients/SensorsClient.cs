@@ -9,9 +9,9 @@ using WebSocket.Stream;
 
 namespace WebSocket.Clients;
 
-public class SensorsClient : IWebClient
+public class RecordClient : IWebClient
 {
-    private ISensorsDAO _sensorsDao;
+    private IRecordDAO _recordDao;
     private ClientWebSocket _clientWebSocket;
     
     
@@ -19,18 +19,18 @@ public class SensorsClient : IWebClient
     private readonly string _uriAddress = "wss://iotnet.cibicom.dk/app?token=vnoUeAAAABFpb3RuZXQudGVyYWNvbS5kawhxYha6idspsvrlQ4C7KWA=";
     private readonly string _eui = "0004A30B00219CAC";
 
-    public SensorsClient()
+    public RecordClient()
     {
         _clientWebSocket = new ClientWebSocket();
         ConnectClientAsync();
     }
     
     
-    private Sensors? ReceivedData(string receivedJson)
+    private Record? ReceivedData(string receivedJson)
     {
         UpLinkStream? receivedPayload = JsonSerializer.Deserialize<UpLinkStream>(receivedJson);
 
-        Sensors? localSensor = null;
+        Record? localRecord = null;
         if (!String.IsNullOrEmpty(receivedPayload!.data))
         {
             Console.WriteLine(receivedPayload.data.ToString());
@@ -41,10 +41,10 @@ public class SensorsClient : IWebClient
             double humidity = Math.Round(Convert.ToInt16(receivedPayload.data.Substring(i+1*l,l),16) / 10.0, 1);
             double co2 = Convert.ToInt16(receivedPayload.data.Substring(i+2*l,l),16);
             byte status = Convert.ToByte(receivedPayload.data.Substring(i+3*l,2),16);
-            localSensor = new Sensors((float)temperature, (float)humidity, (float)co2);
+            localRecord = new Record((float)temperature, (float)humidity, (float)co2);
         }
         
-        return localSensor;
+        return localRecord;
     }
     
     private async Task ConnectClientAsync()
@@ -88,7 +88,7 @@ public class SensorsClient : IWebClient
             Console.WriteLine("---Receive-DownLink---");
             
             //get data and convert
-            Sensors? getSensors = ReceivedData(strResult);
+            Record? getRecord = ReceivedData(strResult);
             
             Console.WriteLine("WS-CLIENT--------->END");
         }
