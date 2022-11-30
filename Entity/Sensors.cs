@@ -5,7 +5,7 @@ namespace Entity;
 public class Sensors
 {
     [Key]
-    public string Id { get; set; } = RandomIDGenerator.Generate(8);
+    public string Id { get; set; } = RandomIDGenerator.Generate(20);
     [Required]
     public DateTime Timestamp { get; set; }
     [Required]
@@ -16,6 +16,18 @@ public class Sensors
     public float CO2 { get; set; }
     [Required]
     public float DewPt { get; set; }
+
+    public Sensors(){}
     
-    //! STest with teacher fake data
+    public Sensors(float temperature, float humidity, float co2)
+    {
+        this.Id = RandomIDGenerator.Generate(20);
+        this.Timestamp = new DateTime();
+        this.Temperature = temperature;
+        this.Humidity = humidity;
+        this.CO2 = co2;
+        this.DewPt = 0;
+    }
+
+    
 }
