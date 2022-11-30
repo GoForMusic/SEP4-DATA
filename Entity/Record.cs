@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-public class Sensors
+public class Record
 {
     [Key]
     public string Id { get; set; } = RandomIDGenerator.Generate(20);
@@ -17,9 +17,9 @@ public class Sensors
     [Required]
     public float DewPt { get; set; }
 
-    public Sensors(){}
+    public Record(){}
     
-    public Sensors(float temperature, float humidity, float co2)
+    public Record(float temperature, float humidity, float co2)
     {
         this.Id = RandomIDGenerator.Generate(20);
         this.Timestamp = new DateTime();

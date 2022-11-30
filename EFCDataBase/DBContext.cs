@@ -7,7 +7,7 @@ public class DBContext : DbContext
 {
     
     public DbSet<User> Users { get; set; }
-    public DbSet<Sensors> Sensors { get; set; }
+    public DbSet<Record> Record { get; set; }
     
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

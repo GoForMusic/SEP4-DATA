@@ -13,13 +13,14 @@ public class User
         Age = 0;
         Country = String.Empty;
         Sex = 'M';
+        boxId = String.Empty;
     }
 
     [Key]
     public string Id { get; set; } = RandomIDGenerator.Generate(20);
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    
+    public string boxId { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     public int Age { get; set; }
