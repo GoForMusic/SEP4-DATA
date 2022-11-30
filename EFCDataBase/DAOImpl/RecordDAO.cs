@@ -1,4 +1,6 @@
-﻿using Entity;
+﻿using EFCDataBase.Queryable;
+using Entity;
+using Entity.RestFilter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -19,9 +21,13 @@ public class RecordDAO : IRecordDAO
         return await database.Record.FirstAsync(t => t.Id.Equals(id));
     }
 
-    public async Task<List<Record>> GetRecordAsync()
+    public async Task<List<Record>> GetRecordsAsync(RecordFilter recordFilter)
     {
-        return await database.Record.ToListAsync();
+        var queryable = database.Record.AsQueryable();
+
+        queryable = RecordQueryable.AddFilltersOnQuery(recordFilter, queryable);
+        
+        return await queryable.ToListAsync();
     }
     
     public async Task DeleteRecordAsync(string id)

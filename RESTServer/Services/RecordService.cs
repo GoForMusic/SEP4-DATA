@@ -1,5 +1,7 @@
 ﻿using EFCDataBase.DAOImpl;
 using Entity;
+using Entity.RestFilter;
+
 namespace WebApplication1.Services;
 
 public class RecordService : IRecordService
@@ -11,11 +13,11 @@ public class RecordService : IRecordService
         _recordDao = recordDao;
     }
     
-    public async Task<ICollection<Record>> GetAllRecordDataAsync()
+    public async Task<ICollection<Record>> GetAllRecordsDataAsync(RecordFilter recordFilter)
     {
         try
         {
-            return await _recordDao.GetRecordAsync();
+            return await _recordDao.GetRecordsAsync(recordFilter);
         }
         catch (Exception e)
         {

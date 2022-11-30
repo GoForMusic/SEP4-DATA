@@ -1,10 +1,11 @@
 ﻿using Entity;
+using Entity.RestFilter;
 
 namespace EFCDataBase.DAOImpl;
 
 public interface IRecordDAO
 {
-    Task<List<Record>> GetRecordAsync();
+    Task<List<Record>> GetRecordsAsync(RecordFilter recordFilter);
     Task<Record> GetRecordAsync(string id);
     Task DeleteRecordAsync(string id);
     Task UpdateRecordAsync(Record record);

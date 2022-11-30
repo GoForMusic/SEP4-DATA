@@ -1,6 +1,7 @@
 ﻿using EFCDataBase;
 using EFCDataBase.DAOImpl;
 using Entity;
+using Entity.RestFilter;
 using NUnit.Framework;
 using WebApplication1.Services;
 
@@ -63,7 +64,7 @@ public class RecordUnitTest
     [Test]
     public async virtual Task GetRecord_AllReturnsNotNull()
     {
-        Assert.NotNull((async () => await _service.GetAllRecordDataAsync()));
+        Assert.NotNull((async () => await _service.GetAllRecordsDataAsync(new RecordFilter())));
     }
 
     [Test]

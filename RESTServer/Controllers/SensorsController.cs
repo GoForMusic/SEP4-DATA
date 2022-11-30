@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Entity.RestFilter;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Services;
 
@@ -17,11 +18,11 @@ public class RecordController : ControllerBase
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<ICollection<Record>>> GetAllRecordDataAsync()
+        public async Task<ActionResult<ICollection<Record>>> GetAllRecordDataAsync([FromQuery] RecordFilter filter)
         {
             try
             {
-                ICollection<Record> record = await _recordService.GetAllRecordDataAsync();
+                ICollection<Record> record= await _recordService.GetAllRecordsDataAsync(filter);
                 return Ok(record);
             }
             catch (Exception e)
