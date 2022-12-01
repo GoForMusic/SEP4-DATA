@@ -4,6 +4,14 @@ namespace Entity;
 
 public class Box
 {
+    public Box(string id, Boolean light, Boolean locked, List<Record> records)
+    {
+        Id = id;
+        this.light = light;
+        this.locked = locked;
+        this.records = records;
+    }
+    
     [Key]
     public string Id { get; set; } = RandomIDGenerator.Generate(20);
     [Required]
@@ -13,11 +21,5 @@ public class Box
     [Required]
     public List<Record> records { get; set; }
 
-    public Box(string id, Boolean light, Boolean locked, List<Record> records)
-    {
-        Id = id;
-        this.light = light;
-        this.locked = locked;
-        this.records = records;
-    }
+    
 }

@@ -47,9 +47,11 @@ builder.Services.AddSwaggerGen(c =>
 //!services login
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
+builder.Services.AddScoped<IBoxService,BoxService>();
 //!db 
 builder.Services.AddScoped<IUserDAO, UserDAO>();
 builder.Services.AddScoped<IRecordDAO,RecordDAO>();
+builder.Services.AddScoped<IBoxDao,BoxDao>();
 
 builder.Services.AddDbContext<DBContext>();
 
