@@ -82,5 +82,19 @@ public class RecordUnitTest
         Assert.AreEqual("99999999",   _service.GetRecordDataByIdAsync("99999999").Result.Id); ;
     }
     
+    [Test]
+    public async virtual Task CalculateDewPtInF()
+    {
+        Record record = new Record()
+        {
+            Id = "testMock",
+            Temperature = 66.7f,
+            Humidity = 12.3f,
+        };
+        Record? returnedRecord=await _service.AddRecordDataAsync(record);
+        //tolerance 0.2f
+        Assert.AreEqual(13.1f, returnedRecord.DewPt,0.2f);
+
+    }
     
 }
