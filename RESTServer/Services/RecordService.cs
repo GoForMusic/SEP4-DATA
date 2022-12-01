@@ -51,6 +51,7 @@ public class RecordService : IRecordService
     {
         try
         {
+            record.DewPt = await CalculateDewPt(record.Temperature, record.Humidity);
             return await _recordDao.AddRecordAsync(record);
         }
         catch (Exception e)
@@ -69,5 +70,17 @@ public class RecordService : IRecordService
         {
             throw new Exception(e.Message);
         }
+    }
+
+    private async Task<float> CalculateDewPt(float temperature, float relativeHumidity)
+    {
+        temperature = (temperature - 32) / 1.8f;
+        float a = 17.625f;
+        float b = 243.04f;
+        double alfa = Math.Log(relativeHumidity / 100) + (a * temperature / (b + temperature));
+        double result = (b * alfa) / (a - alfa);
+        double value = result*(9.0/5.0);
+
+        return (float) value + 32;
     }
 }
