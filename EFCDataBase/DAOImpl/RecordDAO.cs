@@ -19,7 +19,7 @@ public class RecordDAO : IRecordDAO
         return await database.Record.FirstAsync(t => t.Id.Equals(id));
     }
 
-    public async Task<List<Record>> GetRecordAsync()
+    public async Task<List<Record>> GetRecordsAsync(Filter filter)
     {
         return await database.Record.ToListAsync();
     }
