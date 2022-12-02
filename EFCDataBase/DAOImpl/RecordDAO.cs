@@ -21,7 +21,9 @@ public class RecordDAO : IRecordDAO
 
     public async Task<List<Record>> GetRecordsAsync(Filter filter)
     {
-        return await database.Record.ToListAsync();
+        var quaryable = database.Record.AsQueryable();
+        quaryable = Filtering.AddFilter(filter, quaryable);
+        return await quaryable.ToListAsync();
     }
     
     public async Task DeleteRecordAsync(string id)
