@@ -4,7 +4,7 @@ namespace EFCDataBase.DAOImpl;
 
 public interface IRecordDAO
 {
-    Task<List<Record>> GetRecordAsync();
+    Task<List<Record>> GetRecordsAsync(Filter filter);
     Task<Record> GetRecordAsync(string id);
     Task DeleteRecordAsync(string id);
     Task UpdateRecordAsync(Record record);

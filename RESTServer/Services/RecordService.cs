@@ -11,11 +11,11 @@ public class RecordService : IRecordService
         _recordDao = recordDao;
     }
     
-    public async Task<ICollection<Record>> GetAllRecordDataAsync()
+    public async Task<ICollection<Record>> GetAllRecordDataAsync(Filter filter)
     {
         try
         {
-            return await _recordDao.GetRecordAsync();
+            return await _recordDao.GetRecordsAsync(filter);
         }
         catch (Exception e)
         {

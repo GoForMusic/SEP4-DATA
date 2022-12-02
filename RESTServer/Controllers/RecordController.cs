@@ -17,11 +17,11 @@ public class RecordController : ControllerBase
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<ICollection<Record>>> GetAllRecordDataAsync()
+        public async Task<ActionResult<ICollection<Record>>> GetAllRecordDataAsync([FromQuery]Filter filter)
         {
             try
             {
-                ICollection<Record> record = await _recordService.GetAllRecordDataAsync();
+                ICollection<Record> record = await _recordService.GetAllRecordDataAsync(filter);
                 return Ok(record);
             }
             catch (Exception e)
@@ -60,6 +60,7 @@ public class RecordController : ControllerBase
                 return StatusCode(500, e.Message);
             }
         }
+        
 
         [HttpPost]
         public async Task<ActionResult<Record>> AddSensorsDataAsync([FromBody] Record record)
