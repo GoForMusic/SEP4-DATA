@@ -3,6 +3,7 @@ using System;
 using EFCDataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFCDataBase.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20221203201141_reFixThemMigrations2")]
+    partial class reFixThemMigrations2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,10 +35,19 @@ namespace EFCDataBase.Migrations
                     b.Property<bool>("Locked")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("OwnedBy")
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username1")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId", "Username1");
 
                     b.ToTable("Box");
                 });
@@ -110,6 +121,13 @@ namespace EFCDataBase.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Entity.Box", b =>
+                {
+                    b.HasOne("Entity.User", null)
+                        .WithMany("BoxId")
+                        .HasForeignKey("UserId", "Username1");
+                });
+
             modelBuilder.Entity("Entity.Record", b =>
                 {
                     b.HasOne("Entity.Box", null)
@@ -122,6 +140,11 @@ namespace EFCDataBase.Migrations
             modelBuilder.Entity("Entity.Box", b =>
                 {
                     b.Navigation("Records");
+                });
+
+            modelBuilder.Entity("Entity.User", b =>
+                {
+                    b.Navigation("BoxId");
                 });
 #pragma warning restore 612, 618
         }

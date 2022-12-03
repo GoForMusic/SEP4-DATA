@@ -26,36 +26,32 @@ public class UserNUnitTest
 
     private async Task<User> createUserLocal()
     {
+        User localUser = null;
         try
         {
-            User local =  await _service.AddUserAsync(new User()
+            localUser =  await _service.AddUserAsync(new User()
             {
                 Username = "adrian1234",
                 FirstName = "Adrian",
                 LastName = "Militaru",
                 Country = "Denmark",
                 Password = "Test1234",
+                Age = 10,
                 Sex = 'M'
             });
         }
         catch (Exception e)
         {
-            throw e;
+            throw new Exception(e.Message);
         }
 
-        return null;
+        return localUser;
     }
     
     [Test, Order(1)]
     public async virtual Task AddUserSuccessfully()
     {
         Assert.NotNull(await createUserLocal());
-    }
-
-    [Test,Order(2)]
-    public async virtual Task DuplicateUserFound()
-    {
-        Assert.IsNull(await createUserLocal());
     }
     
     [Test]

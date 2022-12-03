@@ -3,6 +3,7 @@ using System;
 using EFCDataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFCDataBase.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20221126041658_AddSensorsTable")]
+    partial class AddSensorsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,26 +24,7 @@ namespace EFCDataBase.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Entity.Box", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Light")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Locked")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("OwnedBy")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Box");
-                });
-
-            modelBuilder.Entity("Entity.Record", b =>
+            modelBuilder.Entity("Entity.Sensors", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -50,13 +33,7 @@ namespace EFCDataBase.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<float>("CO2")
-                        .HasColumnType("real");
-
-                    b.Property<float>("DewPt")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Humidity")
+                    b.Property<float>("Co2")
                         .HasColumnType("real");
 
                     b.Property<float>("Temperature")
@@ -67,9 +44,7 @@ namespace EFCDataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BoxId");
-
-                    b.ToTable("Record");
+                    b.ToTable("Sensors");
                 });
 
             modelBuilder.Entity("Entity.User", b =>
@@ -108,20 +83,6 @@ namespace EFCDataBase.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Entity.Record", b =>
-                {
-                    b.HasOne("Entity.Box", null)
-                        .WithMany("Records")
-                        .HasForeignKey("BoxId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Entity.Box", b =>
-                {
-                    b.Navigation("Records");
                 });
 #pragma warning restore 612, 618
         }
