@@ -1,4 +1,6 @@
-﻿using Entity;
+﻿
+
+using Entity;
 
 namespace EFCDataBase;
 

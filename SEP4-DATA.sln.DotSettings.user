@@ -10,21 +10,14 @@
       &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.RecordUnitTest.CalculateDewPtInF&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;ProjectFile&gt;DB75E654-54F4-42F2-AF27-CFF2D8B7A30E/f:SensorsUnitTest.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;DB75E654-54F4-42F2-AF27-CFF2D8B7A30E/f:RecordUnitTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b558dfa4_002D141a_002D4b8a_002Dbbec_002D4b9e9dc63e93/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetingPostByUsername" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Or&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.RegisterUserPasswordFormat&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.GetUserIncorectUsername&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.GetUserNotFound&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.RegisterUserExist&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.AddUserSuccessfully&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.DuplicateUserFound&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.GetUserFound&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.SensorsUnitTest&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.RecordUnitTest.CalculateDewPtInF&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-    &lt;ProjectFile&gt;DB75E654-54F4-42F2-AF27-CFF2D8B7A30E/f:UserNUnitTest.cs&lt;/ProjectFile&gt;&#xD;
-  &lt;/Or&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9a360b20_002Dd4c2_002D4c8d_002Dad49_002D3ec74404a852/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DuplicateUserFound" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.DuplicateUserFound&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b558dfa4_002D141a_002D4b8a_002Dbbec_002D4b9e9dc63e93/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetingPostByUsername" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\Adi\RiderProjects\SEP4-DATA\NUnitTest" Presentation="&amp;lt;NUnitTest&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

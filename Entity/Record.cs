@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entity;
 
@@ -11,7 +12,9 @@ public class Record
     public float Humidity { get; set; }
     public float CO2 { get; set; }
     public float DewPt { get; set; }
-
+    [ForeignKey("Box")]
+    public string BoxId { get; set; }
+    
     public Record(){}
     
     public Record(float temperature, float humidity, float co2)

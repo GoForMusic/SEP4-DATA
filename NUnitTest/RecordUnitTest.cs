@@ -63,22 +63,13 @@ public class RecordUnitTest
     [Test]
     public async virtual Task GetRecord_AllReturnsNotNull()
     {
-        Assert.NotNull((async () => await _service.GetAllRecordDataAsync()));
+        Assert.NotNull((async () => await _service.GetAllRecordDataAsync(new Filter())));
     }
 
     [Test]
     public async virtual Task GetRecord_ById()
     {
         await createRecordData();
-        DateTime dateTest = new DateTime(2022, 01, 01);
-        Record local =  await _service.AddRecordDataAsync(new Record()
-        {
-            //BoxId = "testBoxId",
-            Timestamp = dateTest,
-            Temperature = 12.3f,
-            CO2 = 12.3f,
-        });
-
         Assert.AreEqual("99999999",   _service.GetRecordDataByIdAsync("99999999").Result.Id); ;
     }
     
