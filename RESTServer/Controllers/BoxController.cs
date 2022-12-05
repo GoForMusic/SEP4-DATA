@@ -61,7 +61,7 @@ public class BoxController : ControllerBase
     }
     
     [HttpPatch]
-    public async Task<ActionResult> UpdateUser([FromBody] Box box)
+    public async Task<ActionResult> UpdateBox([FromBody] Box box)
     {
         try
         {
