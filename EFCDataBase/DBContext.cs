@@ -9,6 +9,7 @@ public class DBContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Record> Record { get; set; }
     public DbSet<Box> Box { get; set; }
+    public DbSet<Preset> Preset { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
