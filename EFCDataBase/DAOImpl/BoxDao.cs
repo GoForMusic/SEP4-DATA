@@ -57,4 +57,20 @@ public class BoxDao : IBoxDao
 
         return box;
     }
+
+    public async Task<Preset> AddPreset(Preset preset)
+    {
+        try
+        {
+            EntityEntry<Preset> newPreset = await database.Preset.AddAsync(preset);
+            await database.SaveChangesAsync();
+            return newPreset.Entity;
+        }  catch (Exception e)
+        {
+            Console.WriteLine(e+" "+ e.StackTrace);
+        }
+
+        return preset;
+
+    }
 }

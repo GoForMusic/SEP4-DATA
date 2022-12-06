@@ -9,4 +9,6 @@ public interface IBoxDao
     Task DeleteBoxAsync(string id);
     Task UpdateBoxAsync(Box box);
     Task<Box> AddBoxAsync(Box box);
+    Task<Preset> AddPreset(Preset preset);
+
 }
