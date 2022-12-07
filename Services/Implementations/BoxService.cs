@@ -1,7 +1,8 @@
 ﻿using EFCDataBase.DAOImpl;
 using Entity;
+using Services.Interfaces;
 
-namespace WebApplication1.Services;
+namespace Services.Implementations;
 
 public class BoxService : IBoxService
 {

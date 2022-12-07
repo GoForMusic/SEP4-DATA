@@ -2,5 +2,6 @@
 
 public interface IWebClient
 {
-    Task WsClientTest();
+    Task WSGetData();
+    Task WSSendData();
 }

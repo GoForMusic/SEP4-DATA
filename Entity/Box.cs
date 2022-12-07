@@ -6,10 +6,9 @@ namespace Entity;
 public class Box
 {
     [Key]
-    public string Id { get; set; } = RandomIDGenerator.Generate(20);
+    public string Id { get; set; }
     public Boolean Light { get; set; }
     public Boolean Locked { get; set; }
     [ForeignKey("User")]
-    public string? OwnedBy { get; set; }
-    public List<Record>? Records { get; set; }
+    public string? UserId { get; set; }
 }

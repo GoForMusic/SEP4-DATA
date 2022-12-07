@@ -21,7 +21,7 @@ public class BoxDao : IBoxDao
 
     public async Task<Box> GetBoxAsync(string id)
     {
-        return await database.Box.FirstAsync(t => t.Id.Equals(id));
+        return await database.Box.FirstAsync(t => t.UserId.Equals(id));
     }
 
     public async Task DeleteBoxAsync(string id)
