@@ -1,6 +1,6 @@
 ﻿using Entity;
 
-namespace WebApplication1.Contracts;
+namespace Services.Interfaces;
 
 public interface IUserService
 {

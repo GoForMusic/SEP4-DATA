@@ -1,6 +1,6 @@
 ﻿using Entity;
 
-namespace WebApplication1.Services;
+namespace Services.Interfaces;
 
 public interface IBoxService
 {

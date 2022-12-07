@@ -1,8 +1,8 @@
 ﻿using EFCDataBase.DAOImpl;
 using Entity;
-using WebApplication1.Contracts;
+using Services.Interfaces;
 
-namespace Services;
+namespace Services.Implementations;
 
 public class UserService : IUserService
 {

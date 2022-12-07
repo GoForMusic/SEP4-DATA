@@ -1,6 +1,6 @@
 ﻿using Entity;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Services;
+using Services.Interfaces;
 
 namespace Controllers;
 

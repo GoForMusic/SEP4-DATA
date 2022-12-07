@@ -1,7 +1,6 @@
 ﻿using Entity;
-using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Services;
+namespace Services.Interfaces;
 
 public interface IRecordService
 {

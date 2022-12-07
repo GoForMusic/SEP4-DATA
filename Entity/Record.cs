@@ -20,7 +20,7 @@ public class Record
     public Record(float temperature, float humidity, float co2)
     {
         this.Id = RandomIDGenerator.Generate(20);
-        this.Timestamp = new DateTime();
+        this.Timestamp = DateTime.UtcNow;
         this.Temperature = temperature;
         this.Humidity = humidity;
         this.CO2 = co2;

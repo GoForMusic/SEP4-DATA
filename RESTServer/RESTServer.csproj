@@ -16,6 +16,7 @@
     <ItemGroup>
       <ProjectReference Include="..\EFCDataBase\EFCDataBase.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
+      <ProjectReference Include="..\Services\Services.csproj" />
       <ProjectReference Include="..\WebSocket\WebSocket.csproj" />
     </ItemGroup>
 

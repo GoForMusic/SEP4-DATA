@@ -1,9 +1,6 @@
-﻿using System.Text.Json;
-using Entity;
+﻿using Entity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.JSInterop;
-using Services;
-using WebApplication1.Contracts;
+using Services.Interfaces;
 
 namespace Controllers;
 

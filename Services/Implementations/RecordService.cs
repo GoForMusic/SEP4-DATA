@@ -1,6 +1,8 @@
 ﻿using EFCDataBase.DAOImpl;
 using Entity;
-namespace WebApplication1.Services;
+using Services.Interfaces;
+
+namespace Services.Implementations;
 
 public class RecordService : IRecordService
 {

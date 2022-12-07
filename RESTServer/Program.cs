@@ -1,11 +1,12 @@
+
+
 using EFCDataBase;
 using EFCDataBase.DAOImpl;
 using Microsoft.OpenApi.Models;
-using Services;
+using Services.Implementations;
+using Services.Interfaces;
 using WebApplication1.Background;
-using WebApplication1.Contracts;
 using WebApplication1.Middleware;
-using WebApplication1.Services;
 using WebSocket.Clients;
 using WebSocket.Interfaces;
 
@@ -44,6 +45,11 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(requirement);
 });
 
+//? WS-Client
+//WS-client
+builder.Services.AddScoped<IWebClient, RecordClient>();
+builder.Services.AddHostedService<WebClientBackgroundService>();
+
 //!services login
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
@@ -54,12 +60,6 @@ builder.Services.AddScoped<IRecordDAO,RecordDAO>();
 builder.Services.AddScoped<IBoxDao,BoxDao>();
 
 builder.Services.AddDbContext<DBContext>();
-
-
-//? WS-Client
-//WS-client
-builder.Services.AddScoped<IWebClient, RecordClient>();
-builder.Services.AddHostedService<WebClientBackgroundService>();
 
 var app = builder.Build();
 

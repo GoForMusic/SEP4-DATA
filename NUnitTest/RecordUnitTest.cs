@@ -1,8 +1,10 @@
-﻿using EFCDataBase;
+﻿
+using EFCDataBase;
 using EFCDataBase.DAOImpl;
 using Entity;
 using NUnit.Framework;
-using WebApplication1.Services;
+using Services.Implementations;
+using Services.Interfaces;
 
 namespace NUnitTest;
 

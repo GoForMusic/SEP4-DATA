@@ -1,5 +1,5 @@
-﻿namespace WebSocket.Stream;
-
+﻿
+namespace WebSocket.Stream;
 public class DownLinkStream
 {
     public string cmd { get; set; }

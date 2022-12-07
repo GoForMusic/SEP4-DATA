@@ -1,9 +1,10 @@
-﻿using EFCDataBase;
+﻿
+
+using EFCDataBase;
 using EFCDataBase.DAOImpl;
 using Entity;
-using Microsoft.EntityFrameworkCore;
-using Services;
-using WebApplication1.Contracts;
+using Services.Implementations;
+using Services.Interfaces;
 
 namespace NUnitTest;
 
