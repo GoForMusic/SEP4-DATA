@@ -33,6 +33,10 @@ namespace EFCDataBase.Migrations
                     b.Property<bool>("Locked")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("PresetId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("UserId")
                         .HasColumnType("text");
 

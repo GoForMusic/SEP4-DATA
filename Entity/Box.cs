@@ -11,4 +11,6 @@ public class Box
     public Boolean Locked { get; set; }
     [ForeignKey("User")]
     public string? UserId { get; set; }
+    [ForeignKey("Preset")]
+    public string PresetId { get; set; }
 }
