@@ -7,8 +7,8 @@ public class Box
 {
     [Key]
     public string Id { get; set; }
-    public Boolean Light { get; set; }
-    public Boolean Locked { get; set; }
+    public bool Light { get; set; }
+    public bool Locked { get; set; }
     [ForeignKey("User")]
     public string? UserId { get; set; }
     [ForeignKey("Preset")]

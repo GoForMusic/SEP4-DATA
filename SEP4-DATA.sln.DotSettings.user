@@ -16,7 +16,7 @@
     &lt;ProjectFile&gt;DB75E654-54F4-42F2-AF27-CFF2D8B7A30E/f:RecordUnitTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9a360b20_002Dd4c2_002D4c8d_002Dad49_002D3ec74404a852/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DuplicateUserFound" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9a360b20_002Dd4c2_002D4c8d_002Dad49_002D3ec74404a852/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DuplicateUserFound" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DB75E654-54F4-42F2-AF27-CFF2D8B7A30E::net6.0::NUnitTest.UserNUnitTest.DuplicateUserFound&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
