@@ -10,7 +10,7 @@ public class Filter
     //*  LT     -> less than
     //*  LTE    -> less than or equal
     
-    //* Toimestap
+    //* Timestamps
     public DateTime TimestampEQ { get; set; }
     public DateTime TimestampNOT { get; set; }
     public DateTime TimestampGT { get; set; }

@@ -47,7 +47,7 @@ public class BoxController : ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    public async Task<ActionResult<User>> DeleteBox([FromRoute] string id)
+    public async Task<ActionResult<Box>> DeleteBox([FromRoute] string id)
     {
         try
         {
