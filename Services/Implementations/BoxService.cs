@@ -33,8 +33,7 @@ public class BoxService : IBoxService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception(e.Message);
         }
     }
 
@@ -58,8 +57,7 @@ public class BoxService : IBoxService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception(e.Message);
         }
     }
 
@@ -71,8 +69,31 @@ public class BoxService : IBoxService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception(e.Message);
+        }
+    }
+
+    public async Task<Preset> AddPreset(Preset preset)
+    {
+        try
+        {
+            return await _boxDao.AddPreset(preset);
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
+
+    public async Task<ICollection<Preset>> GetPresets()
+    {
+        try
+        {
+            return await _boxDao.GetPresets();
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
         }
     }
 }
