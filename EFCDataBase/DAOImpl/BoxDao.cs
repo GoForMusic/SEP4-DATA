@@ -21,7 +21,7 @@ public class BoxDao : IBoxDao
 
     public async Task<Box> GetBoxAsync(string id)
     {
-        return await database.Box.FirstAsync(t => t.UserId.Equals(id));
+        return await database.Box.FirstAsync(t => t.Id.Equals(id));
     }
 
     public async Task DeleteBoxAsync(string id)
@@ -58,6 +58,11 @@ public class BoxDao : IBoxDao
         return box;
     }
 
+    public async Task<ICollection<Preset>> GetPresets()
+    {
+        return await database.Preset.ToListAsync();
+    }
+
     public async Task<Preset> AddPreset(Preset preset)
     {
         try
@@ -71,6 +76,5 @@ public class BoxDao : IBoxDao
         }
 
         return preset;
-
     }
 }

@@ -17,6 +17,20 @@ public class BoxController : ControllerBase
     }
 
     [HttpGet]
+    public async Task<ActionResult<ICollection<Box>>> GetBoxes()
+    {
+        try
+        {
+            ICollection<Box> box = await _boxService.GetBoxesAsync();
+            return Ok(box);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
+    }
+    
+    [HttpGet]
     [Route("{id}")]
     public async Task<ActionResult<Box>> GetBox([FromRoute] string id)
     {

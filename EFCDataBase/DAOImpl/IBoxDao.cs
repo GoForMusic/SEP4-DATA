@@ -10,5 +10,6 @@ public interface IBoxDao
     Task UpdateBoxAsync(Box box);
     Task<Box> AddBoxAsync(Box box);
     Task<Preset> AddPreset(Preset preset);
+    Task<ICollection<Preset>> GetPresets();
 
 }
